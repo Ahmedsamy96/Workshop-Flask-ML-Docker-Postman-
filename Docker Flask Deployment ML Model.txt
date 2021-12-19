@@ -1,0 +1,47 @@
+At first you have to know very well about ML , Flask , and Docker...
+
+Steps of the project :
+
+1- create breast_canser folder and stand on it using anaconda prompt : 
+   cd C:\Users\SAMY\Desktop\Workshop\Model_Deployment\Breast_canser
+
+2- create new environment for this project : 
+          conda create -n breast_cancer python=3.7
+then activate this environment :
+          conda activate breast_cancer
+
+3- from the same prompt : pip install pandas , fsspec, sklearn , seaborn , matplotlib , and jupyter notebook
+
+4- a- open jupyter notebook from the prompt.
+   b- read csv file (for breast cancer).
+   c- Create my ML Model.
+   d- Save the model as pkl file 
+   e- create a new test notebook to use the saved model on a dataset with the same cols and state of breast cancer to predict one given value .
+   
+6- Go to (Deploy folder)  , Create app.py for flask   and Dockerfile for Docker Deployment
+
+7- in app.py we need to get data from POST method so using simple application (postman) take a json block return it as a df row to apply the pkl model on it from the app.py file and run all of this as a webservice using flask.
+   Note : Copy pkl file to (Deploy folder)
+
+8- from prompt (cd Deploy) then, create python env :
+    (conda create -n Deploy python=3.7)
+    (conda activate Deploy)
+    ( pip install pandas sklearn flask fsspec )
+then run app.py :
+    ( python app.py )
+
+9- To save all requirements for Dockder :
+      from prompt staning in Deploy use : 
+             ( pip freeze > requirements.txt)
+ then : ( pip install -r requirements.txt )
+
+10- open file ( Dockerfile ) and make it read requirements.txt
+11- open Docker Desktop 
+12- from Deploy on prompt create image : 
+    ( docker build -t breast_cancer_class:1.0 . )
+     (docker run -p 5000:3000 breast_cancer_class:1.0 )
+
+
+>> docker ps -a (to give a list of all running Containers)
+>> docker images (to give a list of all images)
+>> docker rm -f edfa54  
